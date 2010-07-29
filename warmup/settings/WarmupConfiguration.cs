@@ -48,6 +48,12 @@ namespace warmup.settings
             get { return (string) this["replacementToken"]; }
         }
 
+        [ConfigurationProperty("defaultTemplate", IsRequired = false, DefaultValue = "")]
+        public string DefaultTemplate
+        {
+            get { return (string)this["defaultTemplate"]; }
+        }
+
         /// <summary>
         ///   What type of source control are we using?
         /// </summary>

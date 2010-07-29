@@ -21,8 +21,9 @@ namespace warmup
         {
             //parse out command line
             // warmup web FHLBank.Grouping
-            string templateName = args[0];
-            string name = args[1];
+            var useDefaultTemplate = args.Length < 2;
+            string templateName = useDefaultTemplate ? WarmupConfiguration.settings.DefaultTemplate : args[0];
+            string name = useDefaultTemplate ? args[0] : args[1];
             string target = null;
             if (args.Length > 2) target = args[2];
 
