@@ -19,10 +19,10 @@ namespace warmup
     public class Git :
         IExporter
     {
-        public static void Clone(Uri sourceLocation, TargetDir target)
+        public static void Clone(string sourceLocation, TargetDir target)
         {
             var separationCharacters = new[] {".git"};
-            string[] piecesOfPath = sourceLocation.ToString().Split(separationCharacters, StringSplitOptions.RemoveEmptyEntries);
+            string[] piecesOfPath = sourceLocation.Split(separationCharacters, StringSplitOptions.RemoveEmptyEntries);
             if (piecesOfPath != null && piecesOfPath.Length > 0)
             {
                 string sourceLocationToGit = piecesOfPath[0] + ".git";
@@ -61,9 +61,9 @@ namespace warmup
 
         public void Export(string sourceControlWarmupLocation, string templateName, TargetDir targetDir)
         {
-            var baseUri = new Uri(WarmupConfiguration.settings.SourceControlWarmupLocation + templateName);
+            var gitUri = WarmupConfiguration.settings.SourceControlWarmupLocation + templateName;
             Console.WriteLine("git exporting to: {0}", targetDir.FullPath);
-            Clone(baseUri, targetDir);
+            Clone(gitUri, targetDir);
         }
     }
 }
