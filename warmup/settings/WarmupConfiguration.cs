@@ -54,6 +54,12 @@ namespace warmup.settings
             get { return (string)this["defaultTemplate"]; }
         }
 
+        [ConfigurationProperty("gitBranch", IsRequired = false, DefaultValue = null)]
+        public string GitBranch
+        {
+            get { return (string)this["gitBranch"]; }
+        }
+
         /// <summary>
         ///   What type of source control are we using?
         /// </summary>

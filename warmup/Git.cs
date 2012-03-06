@@ -27,8 +27,13 @@ namespace warmup
             {
                 string sourceLocationToGit = piecesOfPath[0] + ".git";
 
+                var command = string.Format(" /c git clone {0} {1}", sourceLocationToGit, target.FullPath);
+                if (WarmupConfiguration.settings.GitBranch != null)
+                {
+                    command += string.Format("; git checkout {0}", WarmupConfiguration.settings.GitBranch);
+                }
                 var psi = new ProcessStartInfo("cmd",
-                                               string.Format(" /c git clone {0} {1}", sourceLocationToGit, target.FullPath));
+                                               command);
 
                 psi.UseShellExecute = false;
                 psi.CreateNoWindow = true;
